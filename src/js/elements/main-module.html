@@ -1,0 +1,69 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<dom-module id='main-module'>
+    <template>
+        <paper-card heading="Gas Calculator">
+            <div class="card-content">
+                <div class='row'>
+                    Price at current station
+                    <slider-input max='5' step='0.05' value='{{PS}}'></slider-input>
+                </div>
+                <div class='row'>
+                    Price at prospective station
+                    <slider-input max='5' step='0.05' value='{{P}}'></slider-input>
+                </div>
+                <div class='row'>
+                    Distance out-of-way (half)
+                    <slider-input min='1' max='20' value='{{D}}'></slider-input>
+                </div>
+                <div class='row'>
+                    Car MPG
+                    <slider-input min='1' max='120' value='{{M}}'></slider-input>
+                </div>
+                <div class='row'>
+                    Tank Remaining
+                    <slider-input max='30' value='{{T}}'></slider-input>
+                </div>
+
+                <div class='row answer'>
+                    {{answer}}
+                </div>
+
+                <!-- <div class='flex-row'>
+                <paper-input label=''></paper-input>
+                <paper-button>Find Station</paper-button>
+            </div> -->
+
+
+            <div class="card-actions">
+                <!-- <paper-button id='submit' raised>Calculate</paper-button> -->
+                Created by Brendan and Vikul
+            </div>
+        </div>
+    </paper-card>
+</template>
+<script>
+Polymer({
+    is: 'main-module',
+    properties: {
+        PS: { value: 2.25 },
+        P: { value: 2.15 },
+        D: {value: 5},
+        M: {value: 14},
+        T: {value: 10}
+    },
+    observers: [
+        'calculateDiff(PS, P, D, M, T)'
+    ],
+    calculateDiff: function(PS, P, D, M, T) {
+        var shouldDrive = PS > T * P / (T - 2 * D / M );
+        if (shouldDrive) {
+            this.answer = "You should go the station out of your way.";
+        } else {
+            this.answer = "You should go to your current station.";
+        }
+    }
+});
+
+</script>
+</dom-module

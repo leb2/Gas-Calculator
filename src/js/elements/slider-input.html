@@ -1,0 +1,44 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<dom-module id='slider-input'>
+
+    <template value="{{value}}">
+        <style>
+            div {
+                width: 100%;
+            }
+
+            paper-slider {
+                margin-right: 12px;
+            }
+            paper-input {
+                width: 20%;
+            }
+
+        </style>
+        <div class='flex-row'>
+            <paper-slider value="{{value}}" min='{{min}}' max='{{max}}' step='{{step}}'></paper-slider>
+            <paper-input value="$ {{value}}"
+                is="iron-input"
+                prevent-invalid-input
+                allowed-pattern="^\d*\.?\d*$">
+            </paper-input>
+        </div>
+    </template>
+
+    <script>
+    Polymer({
+        is: "slider-input",
+        properties: {
+            min: Number,
+            max: Number,
+            step: Number,
+            value: {
+                type: Number,
+                notify: true
+            }
+        },
+    });
+    </script>
+
+</dom-module>

@@ -1,0 +1,22 @@
+{
+  "name": "gas",
+  "authors": [
+    "Brendan Le <le.brendan@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~1.2.3",
+    "paper-elements": "PolymerElements/paper-elements#~1.0.7"
+  }
+}
