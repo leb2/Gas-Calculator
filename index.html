@@ -12,20 +12,48 @@
         <link rel="import" href="./bower_components/paper-input/paper-input.html">
         <link rel="import" href="./bower_components/paper-card/paper-card.html">
         <link rel="import" href="./bower_components/paper-slider/paper-slider.html">
+        <!-- <link rel="import" href="./bower_components/google-map/google-map.html"> -->
+        <link rel="import" href="./bower_components/font-roboto/roboto.html">
 
         <link rel="import" href="./src/js/elements/slider-input.html">
         <link rel="import" href="./src/js/elements/main-module.html">
+
 
 
         <link type='text/css' rel='stylesheet' href='./src/stylesheets/styles.min.css'></link>
     </head>
 
     <body>
+        <style>
+            google-map {
+                height: 400px;
+                width: 400px;
+                display: inline-block;
+            }
+        </style>
+
+        <!-- <div>
+            <google-map latitude="37.77493" longitude="-122.41942" fit-to-markers apiKey="AIzaSyB05yM16b9gXDEXo6BI_dFKyZsYcvhug30">
+                <google-map-marker latitude="37.779" longitude="-122.3892" draggable="true"></google-map-marker>
+                <google-map-marker latitude="37.777" longitude="-122.38911" draggable="true"></google-map-marker>
+            </google-map>
+        </div> -->
 
         <main-module></main-module>
 
-        <script src="./bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js'></script>
+
+        <script>
+            var data = {
+                origins: "37.77493,-122.41942",
+                destinations: "37.777,-122.38911",
+                key: 'AIzaSyB05yM16b9gXDEXo6BI_dFKyZsYcvhug30'
+            }
+            $.get("https://maps.googleapis.com/maps/api/distancematrix/output", data);
+        // https://maps.googleapis.com/maps/api/distancematrix/output?parameters
+        </script>
+
+        <script src="./bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
         <!-- <script src='./src/js/main.js'></script> -->
     </body>
 </html>

@@ -26,7 +26,9 @@
                 </div>
 
                 <div class='row answer'>
-                    {{answer}}
+                    <div>Effective MPG of current: {{PS}}</div>
+                    <div>Effective MPG of prospective: {{effectiveP}}</div>
+                    <div>{{answer}}</div>
                 </div>
 
                 <!-- <div class='flex-row'>
@@ -56,7 +58,8 @@ Polymer({
         'calculateDiff(PS, P, D, M, T)'
     ],
     calculateDiff: function(PS, P, D, M, T) {
-        var shouldDrive = PS > T * P / (T - 2 * D / M );
+        this.effectiveP = T * P / (T - 2 * D / M );
+        var shouldDrive = PS > this.effectiveP;
         if (shouldDrive) {
             this.answer = "You should go the station out of your way.";
         } else {
